@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your Coding Conf Ticket for Jonatan Kristof. See event details and more.">
+  <meta property="og:title" content="Coding Conf Ticket">
+  <meta property="og:description" content="Your Coding Conf ticket is ready!">
+  <meta property="og:image" content="path-to-image.jpg"> <!-- Optional -->
+  <title>Coding Conf Ticket</title>
+  <link rel="shortcut icon" href="assets/images/favicon-32x32.png" type="image/x-icon">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="start">
+    <div class="parts">
+      <div class="parto">
+        <img src="./assets/images/pattern-circle.svg" alt="Decorative circle pattern">
+      </div>
+      <div class="partt">
+        <img src="./assets/images/pattern-squiggly-line-top.svg" alt="Decorative squiggly line">
+      </div>
+      <div class="partth">
+        <img src="./assets/images/pattern-circle.svg" alt="Decorative circle pattern">
+      </div>
+      <div class="partf">
+        <img src="./assets/images/pattern-squiggly-line-bottom.svg" alt="Decorative squiggly line">
+      </div>
+    </div>
+    
+    <!-- Form Section -->
+    <div class="form-container" id="form-container">
+      <header class="header">
+        <div class="logo">
+          <img src="./assets/images/logo-mark.svg" alt="Coding Conf Logo">
+          <h1>Coding Conf</h1>
+        </div>
+        <h2>Your Journey to Coding Conf 2025 Starts Here!</h2>
+        <p>Secure your spot at next year's biggest coding conference.</p>
+      </header>
+
+      <form class="form" id="ticket-form">
+        <label for="avatar" class="upload-label">Upload Avatar</label>
+<div class="upload-box">
+  <label for="avatar" class="upload-icon">
+    <img src="assets/images/icon-upload.svg" alt="Upload">
+  </label>
+  <input type="file" id="avatar" class="file-input" style="display: none;">
+  <p>Drag and drop or click to upload</p>
+</div>
+<span> <img src="assets/images/icon-info.svg" alt="">Upload your photo (JPG or PNG, max size: 500KB).</span>
+
+<!-- Avatar Preview in the Form -->
+<img id="avatar-preview" alt="Avatar Preview" style="display: none; max-width: 100px; margin-top: 10px;">
+
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Your Full Name">
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="example@email.com">
+
+        <label for="github">GitHub Username</label>
+        <input type="text" id="github" placeholder="@yourusername">
+
+        <button type="submit" class="btn">Generate My Ticket</button>
+      </form>
+    </div>
+
+    <!-- Generated Ticket Section -->
+   
+
+    <!-- Ticket Card Section -->
+    <section class="tic" id="ticket-container" class="hidden">
+      <header class="header">
+        <div class="ticket-headero">
+          <img src="assets/images/logo-mark.svg" alt="Coding Conf Logo" class="ticket-logo">
+          <h2>Coding Conf</h2>
+        </div>
+        <h1>Congrats, <span class="highlight" id="username-display">Jonatan Kristof</span>!</h1>
+        <h3>Your ticket is ready.</h3>
+        <p class="info" id="info-display">
+          We’ve emailed your ticket to <a href="mailto:jonatan@email.com" class="email" id="email-display">jonatan@email.com</a> and will send updates in the run-up to the event.
+        </p>
+      </header>
+      <div class="ticket-card">
+        <img src="assets/images/pattern-ticket.svg" alt="Ticket Background" class="ticket-background">
+        <div class="ticket-content">
+          <div class="ticket-header">
+            <img src="assets/images/logo-mark.svg" alt="Coding Conf Logo" class="ticket-logo">
+            <div>
+              <h2>Coding Conf</h2>
+              <p>Jan 31, 2025 / Austin, TX</p>
+            </div>
+          </div>
+          <div class="attendee-info">
+            <img src="avatar.png" alt="Jonatan's Avatar" class="avatar" id="avatar-img">
+            <div class="name">
+              <h3 id="user-name">Jonatan Kristof</h3>
+              <div class="social">
+                <img src="assets/images/icon-github.svg" alt="GitHub Icon" class="social-icon">
+                <p id="github-username">@jonatankristof0101</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ticket-code">
+          <p>#40609</p>
+        </div>
+      </div>
+    </section>
+    
+  </div>
+
+
+  <script>
+   document.addEventListener('DOMContentLoaded', function () {
+  const ticketForm = document.getElementById('ticket-form');
+  const ticketContainer = document.getElementById('ticket-container');
+  const formContainer = document.getElementById('form-container');
+  const usernameDisplay = document.getElementById('username-display');
+  const emailDisplay = document.getElementById('email-display');
+  const userName = document.getElementById('user-name');
+  const userEmail = document.getElementById('email-display');
+  const avatarImg = document.getElementById('avatar-img');
+  const githubUsername = document.getElementById('github-username');
+  const avatarInput = document.getElementById('avatar'); // The file input element
+
+  // Hide the ticket container initially
+  ticketContainer.style.display = 'none';
+
+  // Handle form submission
+  ticketForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const github = document.getElementById('github').value;
+
+    // Basic validation (could be expanded)
+    if (!name || !email || !github) {
+      alert('Please fill in all fields.');
+      return;
+    }
+
+    // Set the displayed user data on the ticket
+    usernameDisplay.textContent = name;
+    emailDisplay.textContent = email;
+    userName.textContent = name;
+    userEmail.textContent = email;
+    githubUsername.textContent = github;
+
+    // Hide the form and show the ticket
+    formContainer.style.display = 'none';
+    ticketContainer.style.display = 'block';  // Show the ticket
+  });
+
+  // Handle avatar upload
+  avatarInput.addEventListener('change', function (e) {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        avatarImg.src = e.target.result; // Set the avatar image source
+      };
+      reader.readAsDataURL(file); // Read the file and convert it to a data URL
+    }
+  });
+});
+
+  </script>
+  
+</body>
+</html>
